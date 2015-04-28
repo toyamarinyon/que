@@ -8,11 +8,12 @@ gem 'sdoc'                    , '0.4.0'   , group: :doc
 gem 'rb-readline'             , '0.5.2'
 
 group :development, :test do
-  gem 'sqlite3',     '1.3.9'
-  gem 'byebug',      '3.4.0'
-  gem 'web-console', '2.0.0.beta3'
-  gem 'spring',      '1.1.3'
-  gem 'rspec-rails', '3.2.1'
+  gem 'sqlite3'            , '1.3.9'
+  gem 'byebug'             , '3.4.0'
+  gem 'web-console'        , '2.0.0.beta3'
+  gem 'spring'             , '1.1.3'
+  gem 'rspec-rails'        , '3.2.1'
+  gem 'factory_girl_rails' , '4.5.0'
 end
 
 group :production do
