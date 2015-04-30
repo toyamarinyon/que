@@ -1,19 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
+  include RequestHelper
 
-  let(:params) { {} }
+  describe "get /users" do
 
-  describe "POST /users" do
-
-    before do
-      params[:name] = 'user-request'
-      params[:email] = 'user-request@example.com'
-      params[:password] = 'foobar'
-    end
-
-    it "creates post resource" do
-      post users_path, user: params
+    it "returns user resource" do
+      get users_path, params, env
       expect(response).to have_http_status(200)
     end
 

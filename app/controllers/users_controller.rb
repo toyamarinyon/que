@@ -1,19 +1,28 @@
 class UsersController < ApplicationController
 
-  def create
-    @user = User.new user_params
-    if @user.save
-      render json: @user
+  include Garage::RestfulActions
+
+  def require_resources
+    if current_resource_owner
+      @resources = User.find current_resource_owner.id
     else
-      render json: { :errors => @user.errors }, :status => 422
+      @resources = User.all
     end
   end
 
-  def show
-    @user = User.find params[:id]
-    render json: @user
+  def require_resource
+    @resource = User.find(params[:id])
   end
 
+  # def create
+  #   @user = User.new user_params
+  #   if @user.save
+  #     render json: @user
+  #   else
+  #     render json: { :errors => @user.errors }, :status => 422
+  #   end
+  # end
+  #
   private
 
     def user_params
