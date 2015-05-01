@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430105920) do
+ActiveRecord::Schema.define(version: 20150501041353) do
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "query"
+    t.integer  "query_status"
+    t.datetime "query_finished"
+    t.datetime "query_started"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "jobs", ["user_id", "created_at"], name: "index_jobs_on_user_id_and_created_at"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
