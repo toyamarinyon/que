@@ -7,7 +7,4 @@ class Job < ActiveRecord::Base
   validates :user_id, presence: true
   validates :query, presence: true
 
-  include Garage::Representer
-  include Garage::Authorizable
-
 end

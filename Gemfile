@@ -6,6 +6,7 @@ gem 'faker'                   , '1.4.2'
 gem 'jbuilder'                , '2.2.3'
 gem 'sdoc'                    , '0.4.0'   , group: :doc
 gem 'rb-readline'             , '0.5.2'
+gem 'responders'              , '~> 2.0'
 
 group :development, :test do
   gem 'sqlite3'            , '1.3.9'
