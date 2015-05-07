@@ -3,4 +3,6 @@ Rails.application.routes.draw do
     resources 'jobs'
   end
 
+  post 'login' => 'authentication#create'
+
 end
