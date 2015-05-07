@@ -1,9 +1,9 @@
 class AuthenticationController < ApplicationController
 
   def create
-    @user = User.find_by email: params[:email]
+    @user ||= User.find_by email: params[:email]
     if @user && @user.authenticate(params[:password])
-      @user.generate_authentication_token
+      authentication
       render json: @user
     else
       render json: { error: { message: 'wrong email or password' } }
