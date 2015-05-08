@@ -6,7 +6,7 @@ class AuthenticationController < ApplicationController
       authentication
       render json: @user
     else
-      render json: { error: { message: 'wrong email or password' } }
+      render json: { error: { message: 'wrong email or password' } }, status: 422
     end
   end
 

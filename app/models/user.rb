@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     self.authentication_token = User.new_token
     update_attribute :authentication_digest,
                      User.digest(self.authentication_token)
+    p self
   end
 
 end
