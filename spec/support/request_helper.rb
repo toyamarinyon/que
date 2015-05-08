@@ -13,5 +13,14 @@ module RequestHelper
       }
     end
 
+    def log_in_as(user)
+      params[:email] = user.email
+      params[:password] = user.password
+      post login_path, params
+      authentication_token = JSON.parse(response.body)["user"]["authentication_token"]
+      params.delete(:password)
+      params[:token] = authentication_token
+    end
+
   end
 end

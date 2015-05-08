@@ -11,4 +11,13 @@ class ApplicationController < ActionController::Base
   def error_500(error = nil)
     render json: { error: { message: error.message} }, status: 500
   end
+
+  private
+
+    def authentication_user_from_token
+      unless authenticated?
+        render json: { error: { message: "Please log in."} },
+               status: 403
+      end
+    end
 end
