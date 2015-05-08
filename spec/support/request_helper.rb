@@ -22,5 +22,9 @@ module RequestHelper
       params[:token] = authentication_token
     end
 
+    def log_out_as(user)
+      post logout_path, params
+    end
+
   end
 end

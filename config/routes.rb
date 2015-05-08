@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   end
 
   post 'login' => 'authentication#create'
+  post 'logout' => 'authentication#destroy'
 
 end

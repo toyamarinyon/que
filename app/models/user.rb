@@ -33,4 +33,9 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(authentication_digest).is_password? token
   end
 
+  def destroy_authentication
+    self.authentication_token = nil
+    update_attribute :authentication_digest, nil
+  end
+
 end
