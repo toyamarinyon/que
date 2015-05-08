@@ -26,7 +26,11 @@ class User < ActiveRecord::Base
     self.authentication_token = User.new_token
     update_attribute :authentication_digest,
                      User.digest(self.authentication_token)
-    p self
+  end
+
+  def authenticated?(token)
+    return false if authentication_digest.nil?
+    BCrypt::Password.new(authentication_digest).is_password? token
   end
 
 end

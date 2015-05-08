@@ -19,16 +19,15 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it "authenticate user" do
+    it "authenticate user by authentication_token" do
       user = create :user
-      p "authenticate user"
       params[:email] = user.email
       params[:password] = user.password
       expect(user.authentication_digest).to be_nil
       post login_path, params
+      authentication_token = JSON.parse(response.body)["user"]["authentication_token"]
       user.reload
-      p user
-      expect(user.authentication_digest).to be_equal User.digest(user.authentication_token)
+      expect(user.authenticated?(authentication_token)).to be_equal(true)
     end
 
   end
